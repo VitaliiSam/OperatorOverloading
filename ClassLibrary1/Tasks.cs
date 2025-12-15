@@ -116,4 +116,63 @@
             return c1.Population > c2.Population;
         }
     }
+    //Third part - CreditCard
+    public class CreditCard
+    {
+        private decimal balance;
+        private int cvc;
+
+        public decimal Balance
+        { 
+            get; 
+            set;
+        }
+        public int Cvc
+        {
+            get
+            {
+                return cvc;
+            }
+            set
+            {
+                if (value < 100 || value > 999)
+                {
+                    throw new ArgumentException("CVC must have 3 digits");
+                }
+                else
+                {
+                    cvc = value;
+                }
+            }
+        }
+        public CreditCard(decimal balance, int cvc)
+        {
+            Balance = balance;
+            Cvc = cvc;
+        }
+        public static CreditCard operator +(CreditCard crcd, decimal amount)
+        {
+            return new CreditCard(crcd.Balance + amount, crcd.Cvc);
+        }
+        public static CreditCard operator -(CreditCard crcd, decimal amount)
+        {
+            return new CreditCard(crcd.Balance - amount, crcd.Cvc);
+        }
+        public static bool operator ==(CreditCard crcd1, CreditCard crcd2)
+        {
+            return crcd1.Cvc == crcd2.Cvc;
+        }
+        public static bool operator !=(CreditCard crcd1, CreditCard crcd2)
+        {
+            return !(crcd1 == crcd2);
+        }
+        public static bool operator <(CreditCard crcd1, CreditCard crcd2)
+        {
+            return crcd1.Cvc < crcd2.Cvc;
+        }
+        public static bool operator >(CreditCard crcd1, CreditCard crcd2)
+        {
+            return crcd1.Cvc > crcd2.Cvc;
+        }
+    }
 }

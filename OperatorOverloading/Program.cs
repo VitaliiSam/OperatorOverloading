@@ -18,6 +18,19 @@ namespace OperatorOverloading
 
             Console.WriteLine(e1 > e2);
             Console.WriteLine(e1 == e2);
+
+            //Second part - City
+            City c1 = new City(20000);
+            City c2 = new City(30000);
+
+            c1 = c1 + 2000;
+            c2 = c2 - 1000;
+
+            Console.WriteLine(c1.Population);
+            Console.WriteLine(c2.Population);
+
+            Console.WriteLine(c1 > c2);
+            Console.WriteLine(c1 == c2);
         }
     }
 }
